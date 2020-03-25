@@ -7,41 +7,51 @@
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
-        Background="Transparent"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        fw:PointerTracker.Enabled="True"
         fw:AcrylicWindow.Enabled="True"
+        fw:AcrylicWindow.TintOpacity="0"
+        Background="Transparent"
+        BorderBrush="Transparent"
+        BorderThickness="0"
         fw:AcrylicWindow.AcrylicWindowStyle="None"
         FontFamily="{materialDesign:MaterialDesignFont}"
-        BorderThickness="1"
-        BorderBrush="Gray"
         MinHeight="150"
         MinWidth="200"
         Title="Awesome File" Height="600" Width="1000">
 
-
-    <Grid Background="Transparent">
+    <Border BorderBrush="Black" BorderThickness="0.3" CornerRadius="10" Background="#33FFFFFF">
+         <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="150"></RowDefinition>
             <RowDefinition Height="5*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Components:TabBar x:Name="mainTab" >
+                
+                        <Components:TabBar x:Name="mainTab" >
                 <Components:TabBar.Effect>
-                    <DropShadowEffect Opacity="0.7" RenderingBias="Quality" Direction="270" Color="#FFB1B1B1"/>
+                    <DropShadowEffect RenderingBias="Quality" Direction="270" Color="#FFB1B1B1" BlurRadius="30"/>
                 </Components:TabBar.Effect>
             </Components:TabBar>
+     
+        
         </Grid>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="1" Background="White" Margin="0 2 0 0">
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="250" MaxWidth="300"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="1" BorderThickness="0" CornerRadius="0 0 10 0" Background="White" Margin="0 2 0 0">
+                    <Grid Background="White" Margin="0 0 10 0" >
 
+                    </Grid>
+
+                </Border>
             </Grid>
         </Grid>
-    </Grid>
+    </Border>
+   
 </Window>
 
     
