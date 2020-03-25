@@ -13,28 +13,52 @@
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Border BorderBrush="#FFFFFFFF" BorderThickness="1"  CornerRadius="10 10 0 0" Background="White">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="File" Height="40" Margin="10 0 0 0"/>
-                    <Button Padding="20 0 60 0" BorderThickness="0" Background="Transparent">
-                        File Explorer
-                    </Button>
-                    <Button Width="40" Background="Transparent" BorderThickness="0">
-                        <materialDesign:PackIcon Kind="Close"/>
-                    </Button>
-                </StackPanel>
-                
-            </Border>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="120"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Border BorderBrush="#FFFFFFFF" BorderThickness="1"  CornerRadius="10 10 0 0" Background="White">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FileDocumentBoxes" Height="40" Margin="10 0 0 0"/>
+                        <Label Padding="20 10 60 0" BorderThickness="0" Background="Transparent">
+                            File Explorer
+                        </Label>
+                        <Button Width="40" Background="Transparent" BorderThickness="0" Style="{StaticResource ButtonRoundRevealStyle}">
+                            <materialDesign:PackIcon Kind="Close"/>
+                        </Button>
+                    </StackPanel>
 
-            <Button Width="40" Background="{fw:AcrylicBrush}" BorderThickness="0" FontSize="18">
-                <materialDesign:PackIcon Kind="Add"/>
-            </Button>
-        </StackPanel>
+                </Border>
+
+                <Button Width="40" Background="{fw:AcrylicBrush}" BorderThickness="0" FontSize="18" Style="{StaticResource ButtonRevealStyle}">
+                    <materialDesign:PackIcon Kind="Add"/>
+                </Button>
+                <DockPanel  x:Name="tabTitle" Background="Transparent" Focusable="False" Width="9999"/>
+            </StackPanel>
+            <DockPanel Grid.Column="1">
+                <Button x:Name="btMinimize" Background="Transparent" Width="40" BorderThickness="0" Style="{StaticResource ButtonRevealStyle}">
+                    <materialDesign:PackIcon Kind="WindowMinimize"/>
+                </Button>
+                <Button x:Name="btMaximize" Background="Transparent" Width="40" BorderThickness="0" Style="{StaticResource ButtonRevealStyle}">
+                    <materialDesign:PackIcon Kind="WindowMaximize"/>
+                </Button>
+                <Button x:Name="btClose" Background="Transparent" Width="40" BorderThickness="0" Style="{StaticResource ButtonRevealStyle}">
+                    <materialDesign:PackIcon Kind="WindowClose"/>
+                </Button>
+            </DockPanel>
+        </Grid>
+
         <StackPanel Grid.Row="1" Background="White">
-            
+
         </StackPanel>
-      
+
     </Grid>
-    
+    <UserControl.Resources>
+        
+
+    </UserControl.Resources>
+
+
 </UserControl>

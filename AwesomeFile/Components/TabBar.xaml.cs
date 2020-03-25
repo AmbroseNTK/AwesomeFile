@@ -15,14 +15,46 @@ using System.Windows.Shapes;
 
 namespace AwesomeFile.Components
 {
+    public delegate void DragTitleHandler();
     /// <summary>
     /// Interaction logic for TabBar.xaml
     /// </summary>
     public partial class TabBar : UserControl
     {
+        public event DragTitleHandler OnDragTitle;
         public TabBar()
         {
             InitializeComponent();
+            tabTitle.MouseDown += (s,e)=> {
+                if (e.ChangedButton == MouseButton.Left)
+                    OnDragTitle?.Invoke();
+            };
+
+            btClose.Click += (s, e) =>
+            {
+                Application.Current.MainWindow.Close();
+            };
+
+            btMinimize.Click += (s, e) =>
+            {
+                Application.Current.MainWindow.WindowState = WindowState.Minimized;
+            };
+
+            btMaximize.Click += ToggleWindowState;
+            tabTitle.MouseDown += ToggleWindowState;
+
+          
+        }
+        private void ToggleWindowState(Object sender, EventArgs e)
+        {
+            if(sender is DockPanel)
+            {
+                if((e as MouseButtonEventArgs).ClickCount != 2)
+                {
+                    return;
+                }
+            }
+            Application.Current.MainWindow.WindowState = Application.Current.MainWindow.WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
         }
     }
 }

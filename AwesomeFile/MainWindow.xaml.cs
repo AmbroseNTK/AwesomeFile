@@ -23,6 +23,12 @@ namespace AwesomeFile
         public MainWindow()
         {
             InitializeComponent();
+            mainTab.OnDragTitle += () =>
+            {
+                DragMove();
+            };
+             
+            
         }
     }
 }
