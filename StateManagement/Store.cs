@@ -13,6 +13,7 @@ namespace StateManagement
         private static Store instance;
         private Dictionary<string,object> store;
         private List<object> reducers;
+        private Dictionary<string, List<Subscriber>> subscribers;
         public static Store Instance()
         {
             if (instance == null)
@@ -25,10 +26,11 @@ namespace StateManagement
         {
             this.store = new Dictionary<string, object>();
             this.reducers = new List<object>();
+            this.subscribers = new Dictionary<string, List<Subscriber>>();
         }
         public void Add<T>(string id, T state)
         {
-            this.store.Add(id, new Tuple<object, Type>(state,state.GetType()));
+            this.store.Add(id, state);
         }
 
         public T Select<T>(string id)
@@ -45,10 +47,29 @@ namespace StateManagement
 
         public void Dispatch<T>(IAction action)
         {
+            // Before take action
+            foreach(Subscriber subscriber in subscribers[action.GetName()])
+            {
+                subscriber.Invoke(action, true);
+            }
             foreach(IReducer<T> reducer in reducers)
             {
                 this.store[reducer.GetId()] = reducer.Reduce(action,Select<T>(reducer.GetId()));
             }
+            // After take action
+            foreach (Subscriber subscriber in subscribers[action.GetName()])
+            {
+                subscriber.Invoke(action, false);
+            }
+        }
+
+        public void Subscribe(string actionName, Subscriber subscriber)
+        {
+            if (!subscribers.ContainsKey(actionName))
+            {
+                subscribers.Add(actionName, new List<Subscriber>());
+            }
+            subscribers[actionName].Add(subscriber);
         }
 
     }

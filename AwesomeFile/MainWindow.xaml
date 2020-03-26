@@ -29,13 +29,12 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
                 
-                        <Components:TabBar x:Name="mainTab" >
+            <Components:TabBar x:Name="mainTab" >
                 <Components:TabBar.Effect>
                     <DropShadowEffect RenderingBias="Quality" Direction="270" Color="#FFB1B1B1" BlurRadius="30"/>
                 </Components:TabBar.Effect>
             </Components:TabBar>
      
-        
         </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -51,7 +50,25 @@
             </Grid>
         </Grid>
     </Border>
-   
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Duration="0:0:0.200">
+                            <LinearDoubleKeyFrame Value="0.0" KeyTime="0:0:0"/>
+                            <EasingDoubleKeyFrame Value="1.0" KeyTime="0:0:0.200">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <ExponentialEase EasingMode="EaseIn"></ExponentialEase>
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+       
+    </Window.Triggers>
 </Window>
 
     

@@ -23,14 +23,18 @@ namespace AwesomeFile
     {
         public MainWindow()
         {
-            InitializeComponent();
+            // Init store should happen before init all components
+            Store.Instance().Init();
+            Store.Instance().Add("TabHeader", new List<Components.TabHeader>());
+            Store.Instance().AddReducer("TabHeader", new State.Reducers.TabHeaderReducer());
 
+            InitializeComponent();
 
             mainTab.OnDragTitle += () =>
             {
                 DragMove();
             };
-             
+
             
         }
     }

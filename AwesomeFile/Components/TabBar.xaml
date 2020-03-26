@@ -20,20 +20,13 @@
                 <ColumnDefinition Width="120"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <Border BorderBrush="#FFFFFFFF" BorderThickness="1"  CornerRadius="10 10 0 0" Background="White">
-                    <StackPanel Orientation="Horizontal" Background="Transparent">
-                        <materialDesign:PackIcon Kind="FileDocumentBoxes" Height="40" Margin="10 0 0 0"/>
-                        <Label Padding="20 10 60 0" BorderThickness="0" Background="Transparent">
-                            File Explorer
-                        </Label>
-                        <Button Width="40" Background="Transparent" BorderThickness="0" Style="{StaticResource ButtonRoundRevealStyle}">
-                            <materialDesign:PackIcon Kind="Close"/>
-                        </Button>
-                    </StackPanel>
-
-                </Border>
-
-                <Button Width="40" Background="{fw:AcrylicBrush}" BorderThickness="0" FontSize="18" Style="{StaticResource ButtonRevealStyle}">
+                <ScrollViewer x:Name="scrollTabHeader" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Width="500">
+                      <StackPanel x:Name="stackHeader" Orientation="Horizontal" CanHorizontallyScroll="True" >
+                    <local:TabHeader local:Title="File Explorer"></local:TabHeader>
+                </StackPanel>
+                </ScrollViewer>
+              
+                <Button x:Name="btAddTab" Width="40" Background="{fw:AcrylicBrush}" BorderThickness="0" FontSize="18" Style="{StaticResource ButtonRevealStyle}">
                     <materialDesign:PackIcon Kind="Add"/>
                 </Button>
                 <DockPanel  x:Name="tabTitle" Background="Transparent" Focusable="False" Width="9999"/>
