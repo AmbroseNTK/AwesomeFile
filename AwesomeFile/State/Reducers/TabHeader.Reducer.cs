@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AwesomeFile.Components;
+using AwesomeFile.State.Models;
 using StateManagement;
 
 namespace AwesomeFile.State.Reducers
@@ -31,6 +32,31 @@ namespace AwesomeFile.State.Reducers
                 tabHeader.Selected = (bool)action.GetPayload()[1];
                 state.Add(tabHeader);
                 return state;
+            }
+            return state;
+        }
+    }
+    class TabHeaderControlReducer : IReducer<TabHeaderControlData>
+    {
+        public TabHeaderControlData GetDefault()
+        {
+            return new TabHeaderControlData() { SelectedTabID = "", DeleteTabID = "" };
+        }
+
+        public string GetId()
+        {
+            return "TabHeaderControlData";
+        }
+
+        public TabHeaderControlData Reduce(IAction action, TabHeaderControlData state)
+        {
+            if(action is Actions.TabHeaderSelect)
+            {
+                return new TabHeaderControlData() { SelectedTabID = action.GetPayload()[0].ToString(), DeleteTabID = state.DeleteTabID };
+            }
+            if(action is Actions.TabHeaderClose)
+            {
+                return new TabHeaderControlData() { SelectedTabID = state.SelectedTabID, DeleteTabID = action.GetPayload()[0].ToString() };
             }
             return state;
         }

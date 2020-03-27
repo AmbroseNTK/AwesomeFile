@@ -52,9 +52,14 @@ namespace StateManagement
             {
                 subscriber.Invoke(action, true);
             }
-            foreach(IReducer<T> reducer in reducers)
+            for(int i=0;i<reducers.Count;i++)
             {
-                this.store[reducer.GetId()] = reducer.Reduce(action,Select<T>(reducer.GetId()));
+                try
+                {
+                    IReducer<T> reducer = (IReducer<T>)reducers[i];
+                    this.store[reducer.GetId()] = reducer.Reduce(action, Select<T>(reducer.GetId()));
+                }
+                catch { }
             }
             // After take action
             foreach (Subscriber subscriber in subscribers[action.GetName()])

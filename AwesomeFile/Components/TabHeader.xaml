@@ -5,15 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AwesomeFile.Components"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+              xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
              mc:Ignorable="d" 
              d:DesignHeight="40" d:DesignWidth="200">
-    <Border x:Name="headerBorder" BorderBrush="#FFFFFFFF" BorderThickness="1"  CornerRadius="10 10 0 0" Background="White">
+    <Border x:Name="headerBorder" BorderBrush="#FFFFFFFF" BorderThickness="1"  CornerRadius="10 10 0 0" Background="{fw:AcrylicBrush}">
         <StackPanel Orientation="Horizontal" Background="Transparent">
             <materialDesign:PackIcon Kind="FileDocumentBoxes" Height="40" Margin="10 0 0 0"/>
             <Label Padding="20 10 60 0" BorderThickness="0" Background="Transparent">
                 File Explorer
             </Label>
-            <Button Width="40" Background="Transparent" BorderThickness="0" Style="{StaticResource ButtonRoundRevealStyle}">
+            <Button x:Name="btClose" Width="40" Background="Transparent" BorderThickness="0" Style="{StaticResource ButtonRoundRevealStyle}">
                 <materialDesign:PackIcon Kind="Close"/>
             </Button>
         </StackPanel>
@@ -22,11 +23,11 @@
         <EventTrigger RoutedEvent="Loaded">
             <BeginStoryboard>
                 <Storyboard>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="X" Storyboard.TargetName="translateTransform" Duration="0:0:0.500">
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="X" Storyboard.TargetName="translateTransform" Duration="0:0:0.200">
                         <LinearDoubleKeyFrame Value="-100" KeyTime="0:0:0"></LinearDoubleKeyFrame>
-                        <EasingDoubleKeyFrame Value="0" KeyTime="0:0:0.500">
+                        <EasingDoubleKeyFrame Value="0" KeyTime="0:0:0.200">
                             <EasingDoubleKeyFrame.EasingFunction>
-                                <QuadraticEase EasingMode="EaseIn"></QuadraticEase>
+                                <QuadraticEase EasingMode="EaseOut"></QuadraticEase>
                             </EasingDoubleKeyFrame.EasingFunction>
                         </EasingDoubleKeyFrame>
                     </DoubleAnimationUsingKeyFrames>
@@ -34,7 +35,29 @@
                         <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0"></LinearDoubleKeyFrame>
                         <EasingDoubleKeyFrame Value="1" KeyTime="0:0:0.500">
                             <EasingDoubleKeyFrame.EasingFunction>
-                                <QuadraticEase EasingMode="EaseIn"></QuadraticEase>
+                                <QuadraticEase EasingMode="EaseOut"></QuadraticEase>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger SourceName="btClose" RoutedEvent="Button.Click">
+            <BeginStoryboard>
+                <Storyboard x:Name="storyClose">
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="X" Storyboard.TargetName="translateTransform" Duration="0:0:0.200">
+                        <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0"></LinearDoubleKeyFrame>
+                        <EasingDoubleKeyFrame Value="-100" KeyTime="0:0:0.200">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <QuadraticEase EasingMode="EaseOut"></QuadraticEase>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Duration="0:0:0.500">
+                        <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0"></LinearDoubleKeyFrame>
+                        <EasingDoubleKeyFrame Value="0" KeyTime="0:0:0.500">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <QuadraticEase EasingMode="EaseOut"></QuadraticEase>
                             </EasingDoubleKeyFrame.EasingFunction>
                         </EasingDoubleKeyFrame>
                     </DoubleAnimationUsingKeyFrames>

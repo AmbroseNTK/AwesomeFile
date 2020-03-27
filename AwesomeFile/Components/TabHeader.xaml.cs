@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SourceChord.FluentWPF;
+using StateManagement;
 
 namespace AwesomeFile.Components
 {
@@ -33,20 +35,44 @@ namespace AwesomeFile.Components
                 if (value)
                 {
                     headerBorder.Background = new SolidColorBrush(Colors.White);
+                    headerBorder.BorderBrush = new SolidColorBrush(Colors.White);
                 }
                 else
                 {
-                    headerBorder.Background = new SolidColorBrush(Colors.Gray);
+                    headerBorder.Background = defaultBrush;
+                    headerBorder.BorderBrush = defaultBrush;
                 }
             }
         }
 
         public static readonly DependencyProperty SelectedProperty = DependencyProperty.Register("IsSelected",typeof(bool),typeof(TabHeader),new PropertyMetadata(false));
 
+        Brush defaultBrush = null;
 
         public TabHeader()
         {
             InitializeComponent();
+
+            defaultBrush = headerBorder.Background;
+
+            Store.Instance().Subscribe("[TAB HEADER] -> Select Tab", (action, pre) =>
+            {
+                if (!pre)
+                {
+                    this.Selected = (action.GetPayload()[0].ToString() == ID);
+                }
+            });
+
+            MouseDown += TabHeader_MouseDown;
+            storyClose.Completed += (s, e) =>
+            {
+                Store.Instance().Dispatch<State.Models.TabHeaderControlData>(new State.Actions.TabHeaderClose(ID));
+            };
+        }
+
+        private void TabHeader_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Store.Instance().Dispatch<State.Models.TabHeaderControlData>(new State.Actions.TabHeaderSelect(ID));
         }
     }
 }

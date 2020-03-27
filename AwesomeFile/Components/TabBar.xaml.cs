@@ -54,9 +54,33 @@ namespace AwesomeFile.Components
                 {
                     tabHeaders = Store.Instance().Select<List<TabHeader>>("TabHeader");
                     stackHeader.Children.Add(tabHeaders[tabHeaders.Count - 1]);
+                    Store.Instance().Dispatch<State.Models.TabHeaderControlData>(new State.Actions.TabHeaderSelect(tabHeaders[tabHeaders.Count - 1].ID));
                 }
             });
-           
+
+            Store.Instance().Subscribe("[TAB HEADER] -> Close Tab", (action, pre) =>
+            {
+                if (!pre)
+                {
+                    
+                    for(int i = 0; i < tabHeaders.Count; i++)
+                    {
+                        if(tabHeaders[i].ID == action.GetPayload()[0].ToString())
+                        {
+                            stackHeader.Children.RemoveAt(i);
+                            if(tabHeaders[i].Selected && tabHeaders.Count > 1)
+                            {
+                                Store.Instance().Dispatch<State.Models.TabHeaderControlData>(new State.Actions.TabHeaderSelect(tabHeaders[0].ID));
+                            }
+                            tabHeaders.RemoveAt(i);
+                            
+                            return;
+                        }
+                    }
+                }
+            });
+
+            Store.Instance().Dispatch<List<TabHeader>>(new State.Actions.TabHeaderAddNew("File Explorer", true));
         }
 
         private void ScrollTabHeader_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
