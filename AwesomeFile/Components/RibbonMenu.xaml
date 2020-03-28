@@ -4,13 +4,137 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AwesomeFile.Components"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
              mc:Ignorable="d" 
              d:DesignHeight="120" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Button Width="80" Margin="5 0 5 0" Background="{fw:AcrylicBrush}" Style="{StaticResource ButtonRevealStyle}" BorderBrush="Transparent" FontWeight="Bold" Content="File">
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.Click">
+                            <BeginStoryboard >
+                                <Storyboard Duration="0:0:0.200" Storyboard.TargetName="borderFooter">
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.X"  Duration="0:0:0.200" From="{Binding ElementName=borderFooter,Path=RenderTransform.X}" To="20">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CircleEase EasingMode="EaseOut"></CircleEase>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Width="80" Margin="5 0 5 0" Background="{fw:AcrylicBrush}" Style="{StaticResource ButtonRevealStyle}" BorderBrush="Transparent" FontWeight="Bold" Content="Home">
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.Click">
+                            <BeginStoryboard >
+                                <Storyboard Duration="0:0:0.200" Storyboard.TargetName="borderFooter">
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.X"  Duration="0:0:0.200" From="{Binding ElementName=borderFooter,Path=RenderTransform.X}" To="110">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CircleEase EasingMode="EaseOut"></CircleEase>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Width="80" Margin="5 0 5 0" Background="{fw:AcrylicBrush}" Style="{StaticResource ButtonRevealStyle}" BorderBrush="Transparent" FontWeight="Bold" Content="View">
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.Click">
+                            <BeginStoryboard >
+                                <Storyboard Duration="0:0:0.200" Storyboard.TargetName="borderFooter">
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.X"  Duration="0:0:0.200" From="{Binding ElementName=borderFooter,Path=RenderTransform.X}" To="200">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CircleEase EasingMode="EaseOut"></CircleEase>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Width="80" Margin="5 0 5 0" Background="{fw:AcrylicBrush}" Style="{StaticResource ButtonRevealStyle}" BorderBrush="Transparent" FontWeight="Bold" Content="Tools">
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.Click">
+                            <BeginStoryboard >
+                                <Storyboard Duration="0:0:0.200" Storyboard.TargetName="borderFooter">
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.X"  Duration="0:0:0.200" From="{Binding ElementName=borderFooter,Path=RenderTransform.X}" To="290">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CircleEase EasingMode="EaseOut"></CircleEase>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+            </StackPanel>
+            <DockPanel Grid.Row="1" HorizontalAlignment="Left">
+                <Border x:Name="borderFooter" Width="50" Background="DodgerBlue" >
+                    <Border.RenderTransform>
+                        <TranslateTransform X="20">
+                        </TranslateTransform>
+                    </Border.RenderTransform>
+                </Border>
+            </DockPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"></ColumnDefinition>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+             
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Button Width="40" Background="White" BorderThickness="0">
+                    <materialDesign:PackIcon Kind="ArrowLeft"></materialDesign:PackIcon>
+                </Button>
+                <Button Width="40" Background="White" BorderThickness="0">
+                    <materialDesign:PackIcon Kind="ArrowRight"></materialDesign:PackIcon>
+                </Button>
+                <Button Width="40" Background="White" BorderThickness="0">
+                    <materialDesign:PackIcon Kind="ArrowUp"></materialDesign:PackIcon>
+                </Button>
+            </StackPanel>
+            <Border Grid.Column="1" MinWidth="100" Background="White" CornerRadius="15" Margin="5 5 5 5" BorderThickness="1" BorderBrush="Gray">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="55"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="1" Width="30" Background="White" BorderThickness="0">
+                        <materialDesign:PackIcon Kind="Refresh"></materialDesign:PackIcon>
+                    </Button>
+                </Grid>
+            </Border>
+            <Border Grid.Column="2" MinWidth="50" Background="White" CornerRadius="15" Margin="5 5 5 5" BorderThickness="1" BorderBrush="Gray">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="55"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBox BorderThickness="0" Margin="15 0 0 0" VerticalAlignment="Center">Search</TextBox>
+                    <Button Grid.Column="1" Width="30" Background="White" BorderThickness="0">
+                        <materialDesign:PackIcon Kind="Search"></materialDesign:PackIcon>
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+         
+           
+        </StackPanel>
     </Grid>
 </UserControl>

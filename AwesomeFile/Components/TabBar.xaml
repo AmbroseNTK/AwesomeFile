@@ -43,9 +43,9 @@
             </DockPanel>
         </Grid>
 
-        <StackPanel Grid.Row="1" Background="White">
-
-        </StackPanel>
+        <DockPanel Grid.Row="1" Background="White">
+            <local:RibbonMenu Height="100"></local:RibbonMenu>
+        </DockPanel>
 
     </Grid>
     <UserControl.Resources>
