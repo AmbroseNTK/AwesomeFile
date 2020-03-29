@@ -94,7 +94,7 @@
         <Grid Grid.Row="1">
             <ribbons:FileTabMenu></ribbons:FileTabMenu>
         </Grid>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Background="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"></ColumnDefinition>
                 <ColumnDefinition Width="4*"></ColumnDefinition>
@@ -137,8 +137,6 @@
             </Border>
         </Grid>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-         
-           
         </StackPanel>
     </Grid>
 </UserControl>

@@ -23,6 +23,27 @@ namespace AwesomeFile.Components.Ribbons
         public FileTabMenu()
         {
             InitializeComponent();
+            scrollTab.PreviewMouseWheel += ScrollTab_PreviewMouseWheel;
+            SizeChanged += FileTabMenu_SizeChanged;
+        }
+
+        private void FileTabMenu_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            scrollTab.Width = Application.Current.MainWindow.Width;
+        }
+
+        private void ScrollTab_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scrollviewer = sender as ScrollViewer;
+            if (e.Delta > 0)
+            {
+                scrollviewer.LineLeft();
+            }
+            else
+            {
+                scrollviewer.LineRight();
+            }
+            e.Handled = true;
         }
     }
 }

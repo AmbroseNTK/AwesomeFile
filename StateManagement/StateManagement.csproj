@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="IAction.cs" />
     <Compile Include="IReducer.cs" />
+    <Compile Include="IState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Store.cs" />
     <Compile Include="Subscriber.cs" />

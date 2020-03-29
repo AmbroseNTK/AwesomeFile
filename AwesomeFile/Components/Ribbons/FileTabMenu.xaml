@@ -9,82 +9,85 @@
              mc:Ignorable="d" 
              d:DesignHeight="40" d:DesignWidth="1000">
     <Grid>
-        <StackPanel Orientation="Horizontal" Background="White">
-            <Button Width="60" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="pack://application:,,,/Assets/pin.png" Margin="10 10 10 10"></Image>
-                    <TextBlock VerticalAlignment="Center">Pin</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button Width="70" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="pack://application:,,,/Assets/paste.png" Margin="10 10 10 10"></Image>
-                    <TextBlock VerticalAlignment="Center">Paste</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button Width="70" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="pack://application:,,,/Assets/paper.png" Margin="10 10 10 10"></Image>
-                    <TextBlock VerticalAlignment="Center">Copy</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button Width="70" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="pack://application:,,,/Assets/cut.png" Margin="10 10 10 10"></Image>
-                    <TextBlock VerticalAlignment="Center">Cut</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button Width="90" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="pack://application:,,,/Assets/copylink.png" Margin="10 10 10 10"></Image>
-                    <TextBlock VerticalAlignment="Center">Location</TextBlock>
-                </StackPanel>
-            </Button>
-            <Rectangle Width="1" Fill="Gray" Height="20"></Rectangle>
-            <Button Width="90" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="pack://application:,,,/Assets/delete.png" Margin="10 10 10 10"></Image>
-                    <TextBlock VerticalAlignment="Center">Delete</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button Width="90" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="pack://application:,,,/Assets/rename.png" Margin="10 10 10 10"></Image>
-                    <TextBlock VerticalAlignment="Center">Rename</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button Width="90" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="pack://application:,,,/Assets/newfolder.png" Margin="10 10 10 10"></Image>
-                    <TextBlock VerticalAlignment="Center">Folder</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button Width="100" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="pack://application:,,,/Assets/properties.png" Margin="10 10 10 10"></Image>
-                    <TextBlock VerticalAlignment="Center">Properties</TextBlock>
-                </StackPanel>
-            </Button>
-            <Rectangle Width="1" Fill="Gray" Height="20"></Rectangle>
-            <Button Width="90" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="pack://application:,,,/Assets/all.png" Margin="10 10 10 10"></Image>
-                    <TextBlock VerticalAlignment="Center">Select All</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button Width="90" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="pack://application:,,,/Assets/deselect.png" Margin="10 10 10 10"></Image>
-                    <TextBlock VerticalAlignment="Center">Deselect</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button Width="120" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="pack://application:,,,/Assets/select.png" Margin="10 10 10 10"></Image>
-                    <TextBlock VerticalAlignment="Center">Invert Select</TextBlock>
-                </StackPanel>
-            </Button>
-         
-        </StackPanel>
+        <ScrollViewer x:Name="scrollTab" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+            <StackPanel Orientation="Horizontal" Background="White" Height="40">
+                <Button Width="60" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Assets/pin.png" Margin="10 10 10 10"></Image>
+                        <TextBlock VerticalAlignment="Center">Pin</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Width="70" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Assets/paste.png" Margin="10 10 10 10"></Image>
+                        <TextBlock VerticalAlignment="Center">Paste</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Width="70" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Assets/paper.png" Margin="10 10 10 10"></Image>
+                        <TextBlock VerticalAlignment="Center">Copy</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Width="70" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Assets/cut.png" Margin="10 10 10 10"></Image>
+                        <TextBlock VerticalAlignment="Center">Cut</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Width="90" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Assets/copylink.png" Margin="10 10 10 10"></Image>
+                        <TextBlock VerticalAlignment="Center">Location</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Rectangle Width="1" Fill="Gray" Height="20"></Rectangle>
+                <Button Width="90" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Assets/delete.png" Margin="10 10 10 10"></Image>
+                        <TextBlock VerticalAlignment="Center">Delete</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Width="90" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Assets/rename.png" Margin="10 10 10 10"></Image>
+                        <TextBlock VerticalAlignment="Center">Rename</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Width="90" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Assets/newfolder.png" Margin="10 10 10 10"></Image>
+                        <TextBlock VerticalAlignment="Center">Folder</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Width="100" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Assets/properties.png" Margin="10 10 10 10"></Image>
+                        <TextBlock VerticalAlignment="Center">Properties</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Rectangle Width="1" Fill="Gray" Height="20"></Rectangle>
+                <Button Width="90" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Assets/all.png" Margin="10 10 10 10"></Image>
+                        <TextBlock VerticalAlignment="Center">Select All</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Width="90" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Assets/deselect.png" Margin="10 10 10 10"></Image>
+                        <TextBlock VerticalAlignment="Center">Deselect</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Width="120" Style="{StaticResource ButtonRevealStyle}" Background="White" BorderBrush="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Assets/select.png" Margin="10 10 10 10"></Image>
+                        <TextBlock VerticalAlignment="Center">Invert Select</TextBlock>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+        </ScrollViewer>
+        
     </Grid>
 </UserControl>

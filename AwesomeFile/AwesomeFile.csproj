@@ -85,6 +85,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Components\View\ListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -104,6 +108,9 @@
     </Compile>
     <Compile Include="Components\TabHeader.xaml.cs">
       <DependentUpon>TabHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\View\ListView.xaml.cs">
+      <DependentUpon>ListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -135,6 +142,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="State\Actions\TabHeader.Action.cs" />
+    <Compile Include="State\Models\ImmutableListTabHeader.cs" />
     <Compile Include="State\Models\TabHeaderControlData.cs" />
     <Compile Include="State\Reducers\TabHeader.Reducer.cs" />
   </ItemGroup>

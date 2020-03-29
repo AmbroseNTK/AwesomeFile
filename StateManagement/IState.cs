@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace StateManagement
 {
-    public interface IReducer<T> where T : IState<T>
+    public interface IState<T>
     {
-        string GetId();
-        T GetDefault();
-        T Reduce(IAction action, T state);
+        T Clone();
     }
 }

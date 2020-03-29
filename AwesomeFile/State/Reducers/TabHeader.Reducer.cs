@@ -10,11 +10,11 @@ using StateManagement;
 
 namespace AwesomeFile.State.Reducers
 {
-    class TabHeaderReducer : IReducer<List<TabHeader>>
+    class TabHeaderReducer : IReducer<ImmutableListTabHeader>
     {
-        public List<TabHeader> GetDefault()
+        public ImmutableListTabHeader GetDefault()
         {
-            return new List<TabHeader>();
+            return new ImmutableListTabHeader();
         }
 
         public string GetId()
@@ -22,7 +22,7 @@ namespace AwesomeFile.State.Reducers
             return "TabHeader";
         }
 
-        public List<TabHeader> Reduce(IAction action, List<TabHeader> state)
+        public ImmutableListTabHeader Reduce(IAction action, ImmutableListTabHeader state)
         {
             if(action is Actions.TabHeaderAddNew)
             {

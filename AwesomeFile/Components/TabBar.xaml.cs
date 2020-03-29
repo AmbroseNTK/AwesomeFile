@@ -53,7 +53,7 @@ namespace AwesomeFile.Components
                 {
                     if (!pre)
                     {
-                        tabHeaders = Store.Instance().Select<List<TabHeader>>("TabHeader");
+                        tabHeaders = Store.Instance().Select<State.Models.ImmutableListTabHeader>("TabHeader");
                         stackHeader.Children.Add(tabHeaders[tabHeaders.Count - 1]);
                         Store.Instance().Dispatch<State.Models.TabHeaderControlData>(new State.Actions.TabHeaderSelect(tabHeaders[tabHeaders.Count - 1].ID));
                     }
@@ -81,7 +81,7 @@ namespace AwesomeFile.Components
                     }
                 });
 
-                Store.Instance().Dispatch<List<TabHeader>>(new State.Actions.TabHeaderAddNew("File Explorer", true));
+                Store.Instance().Dispatch<State.Models.ImmutableListTabHeader>(new State.Actions.TabHeaderAddNew("File Explorer", true));
             }
             catch { }
         }
@@ -119,7 +119,7 @@ namespace AwesomeFile.Components
 
         private void BtAddTab_Click(object sender, RoutedEventArgs e)
         {
-            Store.Instance().Dispatch<List<TabHeader>>(new State.Actions.TabHeaderAddNew("File Explorer", true));
+            Store.Instance().Dispatch<State.Models.ImmutableListTabHeader>(new State.Actions.TabHeaderAddNew("File Explorer", true));
             
         }
 
