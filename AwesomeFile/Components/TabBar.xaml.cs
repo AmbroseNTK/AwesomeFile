@@ -26,11 +26,8 @@ namespace AwesomeFile.Components
         public TabBar()
         {
             InitializeComponent();
-            tabTitle.MouseDown += (s,e)=> {
-                if (e.ChangedButton == MouseButton.Left)
-                    OnDragTitle?.Invoke();
-            };
-
+            tabTitle.MouseDown += HoverTab;
+           
             btClose.Click += (s, e) =>
             {
                 Application.Current.MainWindow.Close();
@@ -48,39 +45,51 @@ namespace AwesomeFile.Components
             SizeChanged += TabBar_SizeChanged;
             scrollTabHeader.PreviewMouseWheel += ScrollTabHeader_PreviewMouseWheel;
 
-            Store.Instance().Subscribe("[TAB HEADER] -> Add New", (action, pre) =>
+            // In design mode
+            try
             {
-                if (!pre)
-                {
-                    tabHeaders = Store.Instance().Select<List<TabHeader>>("TabHeader");
-                    stackHeader.Children.Add(tabHeaders[tabHeaders.Count - 1]);
-                    Store.Instance().Dispatch<State.Models.TabHeaderControlData>(new State.Actions.TabHeaderSelect(tabHeaders[tabHeaders.Count - 1].ID));
-                }
-            });
 
-            Store.Instance().Subscribe("[TAB HEADER] -> Close Tab", (action, pre) =>
-            {
-                if (!pre)
+                Store.Instance().Subscribe("[TAB HEADER] -> Add New", (action, pre) =>
                 {
-                    
-                    for(int i = 0; i < tabHeaders.Count; i++)
+                    if (!pre)
                     {
-                        if(tabHeaders[i].ID == action.GetPayload()[0].ToString())
+                        tabHeaders = Store.Instance().Select<List<TabHeader>>("TabHeader");
+                        stackHeader.Children.Add(tabHeaders[tabHeaders.Count - 1]);
+                        Store.Instance().Dispatch<State.Models.TabHeaderControlData>(new State.Actions.TabHeaderSelect(tabHeaders[tabHeaders.Count - 1].ID));
+                    }
+                });
+
+                Store.Instance().Subscribe("[TAB HEADER] -> Close Tab", (action, pre) =>
+                {
+                    if (!pre)
+                    {
+
+                        for (int i = 0; i < tabHeaders.Count; i++)
                         {
-                            stackHeader.Children.RemoveAt(i);
-                            if(tabHeaders[i].Selected && tabHeaders.Count > 1)
+                            if (tabHeaders[i].ID == action.GetPayload()[0].ToString())
                             {
-                                Store.Instance().Dispatch<State.Models.TabHeaderControlData>(new State.Actions.TabHeaderSelect(tabHeaders[0].ID));
+                                stackHeader.Children.RemoveAt(i);
+                                if (tabHeaders[i].Selected && tabHeaders.Count > 1)
+                                {
+                                    Store.Instance().Dispatch<State.Models.TabHeaderControlData>(new State.Actions.TabHeaderSelect(tabHeaders[0].ID));
+                                }
+                                tabHeaders.RemoveAt(i);
+
+                                return;
                             }
-                            tabHeaders.RemoveAt(i);
-                            
-                            return;
                         }
                     }
-                }
-            });
+                });
 
-            Store.Instance().Dispatch<List<TabHeader>>(new State.Actions.TabHeaderAddNew("File Explorer", true));
+                Store.Instance().Dispatch<List<TabHeader>>(new State.Actions.TabHeaderAddNew("File Explorer", true));
+            }
+            catch { }
+        }
+
+        private void HoverTab(object s, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                OnDragTitle?.Invoke();
         }
 
         private void ScrollTabHeader_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -99,7 +108,11 @@ namespace AwesomeFile.Components
 
         private void TabBar_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            scrollTabHeader.Width = e.NewSize.Width - 200;
+            try
+            {
+                scrollTabHeader.Width = e.NewSize.Width - 200;
+            }
+            catch { }
         }
 
         private List<TabHeader> tabHeaders;

@@ -19,31 +19,65 @@
         FontFamily="{materialDesign:MaterialDesignFont}"
         MinHeight="150"
         MinWidth="200"
+        x:Name="mainWindow"
         Title="Awesome File" Height="600" Width="1000">
 
-    <Border BorderBrush="Black" BorderThickness="0.3" CornerRadius="10" Background="#33FFFFFF">
-         <Grid >
+    <Border BorderBrush="Black" BorderThickness="0.3" CornerRadius="10" Background="#33FFFFFF" >
+        
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="150"></RowDefinition>
             <RowDefinition Height="5*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-                
-            <Components:TabBar x:Name="mainTab" >
-                <Components:TabBar.Effect>
-                    <DropShadowEffect RenderingBias="Quality" Direction="270" Color="#FFB1B1B1" BlurRadius="30"/>
-                </Components:TabBar.Effect>
-            </Components:TabBar>
-     
-        </Grid>
+            <Grid Grid.Row="0">
+                <Components:TabBar x:Name="mainTab" >
+                    <Components:TabBar.Effect>
+                        <DropShadowEffect RenderingBias="Quality" Direction="270" Color="#FFB1B1B1" BlurRadius="30"/>
+                    </Components:TabBar.Effect>
+                </Components:TabBar>
+
+            </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" MinWidth="250" MaxWidth="300"></ColumnDefinition>
                     <ColumnDefinition Width="3*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="1" BorderThickness="0" CornerRadius="0 0 10 0" Background="White" Margin="0 2 0 0">
-                    <Grid Background="White" Margin="0 0 10 0" >
-
+                    <Grid x:Name="mainGrid" Background="White" Margin="0 0 10 0" >
+                        <Grid.ContextMenu>
+                            <ContextMenu HorizontalAlignment="Left">
+                                
+                                <ContextMenu.Template>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <Border Width="120" Height="200" Background="{fw:AcrylicBrush TintColor=White, TintOpacity=0.5, TargetName=mainWindow}"  BorderThickness="1" CornerRadius="4" BorderBrush="Gray">
+                                                
+                                                <StackPanel>
+                                                    <Button Background="{fw:AcrylicBrush}" Style="{StaticResource ButtonRevealStyle}" BorderBrush="{fw:RevealBrush}" Height="30" Margin="0 10 0 0" HorizontalContentAlignment="Left">Action 1</Button>
+                                                    <Button Background="{fw:AcrylicBrush}" BorderBrush="{fw:RevealBrush}" Height="30" HorizontalContentAlignment="Left">Action 1</Button>
+                                                    <Button Background="{fw:AcrylicBrush}" BorderBrush="{fw:RevealBrush}" Height="30"  HorizontalContentAlignment="Left">Action 1</Button>
+                                                    <Button Background="{fw:AcrylicBrush}" BorderBrush="{fw:RevealBrush}" Height="30"  HorizontalContentAlignment="Left">Action 1</Button>
+                                                    <Button Background="{fw:AcrylicBrush}" BorderBrush="{fw:RevealBrush}" Height="30"  HorizontalContentAlignment="Left">Action 1</Button>
+                                                </StackPanel>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </ContextMenu.Template>
+                                <ContextMenu.Triggers>
+                                    <EventTrigger RoutedEvent="Window.Loaded">
+                                        <BeginStoryboard>
+                                            <Storyboard Duration="0:0:0.200">
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.200" From="0" To="1">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CircleEase EasingMode="EaseOut"></CircleEase>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </ContextMenu.Triggers>
+                            </ContextMenu>
+                        </Grid.ContextMenu>
                     </Grid>
 
                 </Border>
