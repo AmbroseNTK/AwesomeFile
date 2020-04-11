@@ -44,16 +44,11 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </UserControl.Resources>
-    <UserControl.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource AnimCheck}"/>
-            <BeginStoryboard Storyboard="{StaticResource AnimUncheck}"/>
-        </EventTrigger>
-    </UserControl.Triggers>
 
-    <Grid x:Name="mainGrid" Background="White">
-        <Ellipse Stroke="Gray" StrokeThickness="2" Width="20" Height="20" x:Name="mainEllipse"></Ellipse>
-        <Ellipse x:Name="innerEllipse" Width="12" Height="12" Fill="DodgerBlue" Stroke="Transparent" RenderTransformOrigin="0.5,0.5">
+
+    <Grid x:Name="mainGrid" Background="Transparent">
+        <Ellipse Stroke="Gray" StrokeThickness="1" Width="15" Height="15" x:Name="mainEllipse"></Ellipse>
+        <Ellipse x:Name="innerEllipse" Width="10" Height="10" Fill="DodgerBlue" Stroke="Transparent" RenderTransformOrigin="0.5,0.5">
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

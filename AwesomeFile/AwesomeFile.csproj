@@ -93,6 +93,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\FluentListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FluentListViewHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -118,6 +126,12 @@
     </Compile>
     <Compile Include="Controls\FluentCheckBox.xaml.cs">
       <DependentUpon>FluentCheckBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FluentListView.xaml.cs">
+      <DependentUpon>FluentListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FluentListViewHeader.xaml.cs">
+      <DependentUpon>FluentListViewHeader.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -148,9 +162,13 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="State\Actions\FileList.Action.cs" />
     <Compile Include="State\Actions\TabHeader.Action.cs" />
+    <Compile Include="State\Models\FileList.cs" />
+    <Compile Include="State\Models\FileListItem.cs" />
     <Compile Include="State\Models\ImmutableListTabHeader.cs" />
     <Compile Include="State\Models\TabHeaderControlData.cs" />
+    <Compile Include="State\Reducers\FileList.Reducer.cs" />
     <Compile Include="State\Reducers\TabHeader.Reducer.cs" />
   </ItemGroup>
   <ItemGroup>

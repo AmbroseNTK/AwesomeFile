@@ -48,6 +48,7 @@ namespace StateManagement
 
         public void Dispatch<T>(IAction action) where T:IState<T>
         {
+            if (!subscribers.ContainsKey(action.GetName())) { return; }
             // Before take action
             foreach(Subscriber subscriber in subscribers[action.GetName()])
             {
