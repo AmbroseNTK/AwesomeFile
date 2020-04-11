@@ -29,7 +29,11 @@ namespace AwesomeFile.Components.Ribbons
 
         private void FileTabMenu_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            scrollTab.Width = Application.Current.MainWindow.Width;
+            try
+            {
+                scrollTab.Width = Application.Current.MainWindow.Width;
+            }
+            catch { }
         }
 
         private void ScrollTab_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
